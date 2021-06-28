@@ -40,6 +40,25 @@ class NovaApiVideo extends Field
     public $originalNameColumn;
 
     /**
+     * Indicates if additional attributes should be saved to the database.
+     *
+     * @var bool
+     */
+    public $saveAdditionalAttributes = false;
+
+    /**
+     * The additional attributes that should be saved to the database.
+     *
+     * @var array
+     */
+    public $additionalAttributes = [
+        'file_name',
+        'file_type',
+        'size',
+        'video_duration'
+    ];
+
+    /**
      * Create a new field.
      *
      * @param  string  $name
@@ -99,14 +118,23 @@ class NovaApiVideo extends Field
     protected function prepareStorageCallback($storageCallback)
     {
         $this->storageCallback = $storageCallback ?? function ($request, $model, $attribute, $requestAttribute) {
-            return $this->mergeExtraStorageColumns($request, [
-                $this->attribute => $this->makePrivate($request, $requestAttribute),
-                'file_name'      => $request->input('videoFile')[$requestAttribute]['file_name'],
-                'file_type'      => $request->input('videoFile')[$requestAttribute]['file_type'],
-                'size'           => $request->input('videoFile')[$requestAttribute]['size'],
-                'video_duration' => $request->input('videoFile')[$requestAttribute]['video_duration'],
-                'api_video_id'   => $request->input('videoFile')[$requestAttribute]['api_video_id'],
-            ]);
+            $additionalAttributes = [];
+
+
+            if ($this->saveAdditionalAttributes) {
+                $additionalAttributes = collect($this->additionalAttributes)
+                    ->mapWithKeys(
+                        fn ($attributeName) => [$attributeName => $request->input('videoFile')[$requestAttribute][$attributeName] ?? null]
+                    )
+                    ->reject(fn ($attr) => is_null($attr))
+                    ->toArray();
+            }
+
+
+            return $this->mergeExtraStorageColumns($request, array_merge(
+                [$this->attribute => $this->makePrivate($request, $requestAttribute)],
+                $additionalAttributes,
+            ));
         };
     }
 
@@ -120,7 +148,7 @@ class NovaApiVideo extends Field
     protected function makePrivate($request, $requestAttribute)
     {
         return with($request->input('videoFile')[$requestAttribute]['api_video_id'], function ($apiVideoId) use ($request) {
-            $apiVideo = ApiVideo::updateVideo($apiVideoId, [
+            ApiVideo::updateVideo($apiVideoId, [
                 'public'     => false,
                 'mp4Support' => false,
             ]);
@@ -178,6 +206,21 @@ class NovaApiVideo extends Field
         return $this->withMeta([
             'api_video_url' => config('api-video.url').'/upload?token='.$token,
         ]);
+    }
+
+    /**
+     * Set the additional attributes to save in the database.
+     *
+     * @param  array|string  $attributes
+     * @return $this
+     */
+    public function withAdditionalAttributes($attributes)
+    {
+        $this->saveAdditionalAttributes = true;
+
+        $this->additionalAttributes = is_array($attributes) ? $attributes : func_get_args();
+
+        return $this;
     }
 
     /**

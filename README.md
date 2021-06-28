@@ -17,13 +17,35 @@ composer require steadfast-collective/nova-api-video
 ## Usage
 
 ```php
-// Usage description here
+use SteadfastCollective\NovaApiVideo;
+
+NovaApiVideo::make('Api Video Id', 'api_video_id')
+    ->rules('required')
+    ->acceptedTypes('video/*');
 ```
 
-### Testing
+### Store additional attributes
 
-```bash
-composer test
+You can call `withAdditionalAttributes()` to save additional attributes to the database. These include 'file_name', 'file_type', 'size' and 'video_duration'.
+
+```php
+use SteadfastCollective\NovaApiVideo;
+
+NovaApiVideo::make('Api Video Id', 'api_video_id')
+    ->rules('required')
+    ->acceptedTypes('video/*')
+    ->withAdditionalAttributes();
+```
+
+You can also specify which additional attributes you want to save by passing the field names as a parameter.
+
+```php
+use SteadfastCollective\NovaApiVideo;
+
+NovaApiVideo::make('Api Video Id', 'api_video_id')
+    ->rules('required')
+    ->acceptedTypes('video/*')
+    ->withAdditionalAttributes('file_name', 'file_type');
 ```
 
 ### Changelog
