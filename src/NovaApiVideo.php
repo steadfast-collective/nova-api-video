@@ -211,14 +211,16 @@ class NovaApiVideo extends Field
     /**
      * Set the additional attributes to save in the database.
      *
-     * @param  array|string  $attributes
+     * @param  array|string|null  $attributes
      * @return $this
      */
     public function withAdditionalAttributes($attributes = null)
     {
         $this->saveAdditionalAttributes = true;
 
-        $this->additionalAttributes = is_array($attributes) ? $attributes : func_get_args();
+        if (!is_null($attributes)) {
+            $this->additionalAttributes = is_string($attributes) ? func_get_args() : $attributes;
+        }
 
         return $this;
     }
