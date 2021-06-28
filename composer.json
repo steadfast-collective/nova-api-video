@@ -1,0 +1,37 @@
+{
+    "name": "steadfastcollective/nova-api-video",
+    "description": "Api.video upload field for Laravel Nova.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "api.video"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0",
+        "steadfastcollective/laravel-api-video": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SteadfastCollective\\NovaApiVideo\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SteadfastCollective\\NovaApiVideo\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:steadfast-collective/laravel-api-video.git"
+        }
+    ]
+}
