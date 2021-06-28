@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/steadfast-collective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfast-collective/nova-api-video)
 [![Total Downloads](https://img.shields.io/packagist/dt/steadfast-collective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfast-collective/nova-api-video)
-![GitHub Actions](https://github.com/steadfast-collective/nova-api-video/actions/workflows/main.yml/badge.svg)
 
 Api.video upload field for Laravel Nova. It allows uploading videos (supports large files) to [api.video](https://api.video/).
 
