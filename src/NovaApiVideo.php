@@ -214,7 +214,7 @@ class NovaApiVideo extends Field
      * @param  array|string  $attributes
      * @return $this
      */
-    public function withAdditionalAttributes($attributes)
+    public function withAdditionalAttributes($attributes = null)
     {
         $this->saveAdditionalAttributes = true;
 
