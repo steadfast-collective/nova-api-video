@@ -27,11 +27,5 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:steadfast-collective/laravel-api-video.git"
-        }
-    ]
+    "prefer-stable": true
 }
