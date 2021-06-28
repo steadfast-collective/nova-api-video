@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/steadfast-collective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfast-collective/nova-api-video)
 ![GitHub Actions](https://github.com/steadfast-collective/nova-api-video/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Api.video upload field for Laravel Nova. It allows uploading videos (supports large files) to [api.video](https://api.video/).
 
 ## Installation
 
