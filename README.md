@@ -1,7 +1,7 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/steadfast-collective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfast-collective/nova-api-video)
-[![Total Downloads](https://img.shields.io/packagist/dt/steadfast-collective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfast-collective/nova-api-video)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/steadfastcollective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfastcollective/nova-api-video)
+[![Total Downloads](https://img.shields.io/packagist/dt/steadfastcollective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfastcollective/nova-api-video)
 
 Api.video upload field for Laravel Nova. It allows uploading videos (supports large files) to [api.video](https://api.video/).
 
@@ -10,7 +10,7 @@ Api.video upload field for Laravel Nova. It allows uploading videos (supports la
 You can install the package via composer:
 
 ```bash
-composer require steadfast-collective/nova-api-video
+composer require steadfastcollective/nova-api-video
 ```
 
 ## Usage
