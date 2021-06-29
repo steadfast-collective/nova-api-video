@@ -1,4 +1,4 @@
-# Very short description of the package
+# Api.video upload field for [Laravel Nova](https://nova.laravel.com/)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/steadfastcollective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfastcollective/nova-api-video)
 [![Total Downloads](https://img.shields.io/packagist/dt/steadfastcollective/nova-api-video.svg?style=flat-square)](https://packagist.org/packages/steadfastcollective/nova-api-video)
